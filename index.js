@@ -28,6 +28,8 @@ assignNums = (_numObj, arrElements) => {
   let numObj = Object.keys(initialState);
   arrElements.forEach((element, index) => {
     element.innerHTML = numObj[index];
-    element.style.backgroundColor = _numObj[index + 1];
+    // element.style.backgroundColor = _numObj[index + 1];
+    // let color = _numObj[index + 1];
+    element.style.setProperty("--color", _numObj[index + 1]);
   });
 };

@@ -12,8 +12,12 @@ body {
 .container {
   height: 100%;
   width: 100%;
+  max-width: 960px;
   display: grid;
   grid-template-rows: 3rem auto 2.5rem;
+  margin: 0 auto;
+  user-select: none;
+  -webkit-user-select: none;
 }
 /* action button styling */
 button {
@@ -45,6 +49,7 @@ button {
   grid-template-columns: 1fr;
   grid-auto-flow: row;
   grid-auto-rows: 2rem;
+  gap: 0.2rem;
   margin: 0.5rem;
 }
 .cardGrid div {
@@ -53,12 +58,14 @@ button {
   display: grid;
   grid-template-columns: 1rem 1fr;
   text-align: center;
+  background-color: #efefef;
 }
 .cardGrid div:before {
   height: 100%;
-  width: 10%;
+  width: 100%;
   display: inline-block;
-  content: "";
+  content: attr(numColor);
+  background-color: var(--color);
 }
 
 @media (min-width: 376px) {
@@ -74,6 +81,7 @@ button {
   }
   .cardGrid {
     grid-area: cardGrid;
+    gap: 0rem;
     margin: 0;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(4rem, 1fr);
@@ -87,9 +95,13 @@ button {
     color: #fff;
     font-size: 4rem;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    z-index: 2;
+    position: relative;
   }
   .cardGrid div:before {
-    display: none;
+    /* display: none; */
+    position: absolute;
+    z-index: -1;
   }
   .credits {
     grid-area: credits;
